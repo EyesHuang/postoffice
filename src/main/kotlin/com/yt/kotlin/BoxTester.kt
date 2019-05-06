@@ -1,5 +1,6 @@
 package com.yt.kotlin
 
+import com.yt.SizeException
 import java.util.*
 
 fun main() {
@@ -24,11 +25,6 @@ fun main() {
             println("Please enter object's height:")
             height = scanner.nextInt()
 
-            if (length < 0 || width < 0 || height < 0) {
-                println("Need to set values > 0")
-                continue
-            }
-
             when(number) {
                 3 -> {
                     box3 = Box3(length, width, height)
@@ -41,10 +37,7 @@ fun main() {
                 else -> println("Please select the right box.")
             }
 
-
         }
-
-
 
     }
 
@@ -52,7 +45,19 @@ fun main() {
 }
 
 
-open class Box3(var length: Float, var width: Float, var height: Int) {
+open class Box3() {
+    private var length = 0.0f
+    private var width = 0.0f
+    private var height = 0
+
+    constructor(length: Float, width: Float, height: Int) : this() {
+        if(length > 0 && width > 0 && height > 0) {
+            this.length = length
+            this.width = width
+            this.height = height
+        } else throw SizeException()
+    }
+
     companion object {
         const val LENGTH = 23f
         const val WIDTH = 14f
@@ -65,7 +70,8 @@ open class Box3(var length: Float, var width: Float, var height: Int) {
 }
 
 
-class Box5(length: Float, width: Float, height: Int): Box3(length, width, height) {
+class Box5(var length: Float, var width: Float, var height: Int): Box3(length, width, height) {
+
     companion object {
         const val LENGTH = 39.5f
         const val WIDTH = 27.5f
