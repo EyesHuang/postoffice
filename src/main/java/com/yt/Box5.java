@@ -6,7 +6,7 @@ public class Box5 extends Box3 {
     private static float WIDTH = 27.5f;
     private static int HEIGHT = 23;
 
-    public Box5(float length, float width, int height) {
+    public Box5(float length, float width, int height) throws SizeException {
         super(length, width, height);
     }
 

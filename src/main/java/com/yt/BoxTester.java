@@ -24,13 +24,21 @@ public class BoxTester {
 
                 switch (number) {
                     case 3:
-                        box3 = new Box3(length, width, height);
+                        try {
+                            box3 = new Box3(length, width, height);
+                        } catch (SizeException e) {
+                            e.getMessage();
+                        }
                         JOptionPane.showMessageDialog(null,
                                 "Things could place in the box3:"
                                 + box3.validate(length, width, height));
                         break;
                     case 5:
-                        box5 = new Box5(length, width, height);
+                        try {
+                            box5 = new Box5(length, width, height);
+                        } catch (SizeException e) {
+                            e.getMessage();
+                        }
                         JOptionPane.showMessageDialog(null,
                                 "Things could place in the box5:"
                                 + box5.validate(length, width, height));
@@ -41,14 +49,6 @@ public class BoxTester {
                 }
             }
         }
-        /*Please enter object's length: 15
-        Please enter object's width: 18
-        Please enter object's height: 10
-        Box5
-                或
-        Please enter object's length: 20
-        Please enter object's width: 11
-        Please enter object's height: 9
-        Box3*/
+
     }
 }

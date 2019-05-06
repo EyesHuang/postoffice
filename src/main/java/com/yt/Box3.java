@@ -9,13 +9,13 @@ public class Box3 {
     private static float WIDTH = 14f;
     private static int HEIGHT = 13;
 
-    public Box3(float length, float width, int height) {
-        if (length != 0 && width != 0 && height != 0) {
+    public Box3(float length, float width, int height) throws SizeException {
+        if (length > 0 && width > 0 && height > 0) {
             this.length = length;
             this.width = width;
             this.height = height;
         } else {
-            System.out.println("Need to set values > 0");
+            throw new SizeException();
         }
     }
 
